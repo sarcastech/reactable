@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import TableRow from './TableRow'
 import TableHeader from './TableHeader'
+import TableBody from './TableBody'
 
 class Table extends Component {
 
@@ -11,12 +11,8 @@ class Table extends Component {
   render () {
     return (
       <table className={this.getCSSClass()}>
-        <thead>
-          <TableHeader headerData={this.props.data.headers} />
-        </thead>
-        <tbody>
-          <TableRow rowData={this.props.data.content} />
-        </tbody>
+        <TableHeader headerData={this.props.data.headers} />
+        <TableBody bodyData={this.props.data.content} />
       </table>
     )
   }

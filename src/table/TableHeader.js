@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
+import TH from './TableHeaderCell';
 
 class TableHeader extends Component {
 
   getCells = () => {
     return this.props.headerData.map(function (item, index) {
-      return (<th key={index}>{item}</th>)
+      return (<TH key={index} value={item} />)
     })
   }
 
   render () {
     return (
-      <tr>
-        {this.getCells()}
-      </tr>
+      <thead>
+        <tr>
+          {this.getCells()}
+        </tr>
+      </thead>
     )
   }
 }

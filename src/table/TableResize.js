@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Resizer extends Component {
+class TableResize extends Component {
 
   constructor (props) {
     super(props)
@@ -19,17 +19,21 @@ class Resizer extends Component {
     this.setState({active: false});
   }
 
+  onMouseMove = (event) => {
+    if (this.state.active) {
+      console.log('pos = ', event.pageX);
+    }
+  }
+
   setStyles () {
     return `resizer-drag ${this.state.active ? 'resizer-ghost' : ''}`;
   }
 
   render () {
     return (
-      <div className={this.setStyles()} onMouseDown={this.onMouseDown} onMouseUp={this.onMouseUp}>
-        test
-      </div>
+      <div className={this.setStyles()} onMouseDown={this.onMouseDown} onMouseMove={this.onMouseMove} onMouseUp={this.onMouseUp} />
     );
   }
 };
 
-export default Resizer;
+export default TableResize;
