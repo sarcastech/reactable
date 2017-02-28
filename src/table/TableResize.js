@@ -5,23 +5,29 @@ class TableResize extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      active: false
+      active: false,
+      startPosition: 0
     };
   }
 
   onMouseDown = (event) => {
-    console.log('hello');
+    event.preventDefault()
+    this.setState({startPosition: event.pageX})
     this.setState({active: true});
+
+    this.props.snapshotWidth()
+
+    document.onmousemove = this.onMouseMove;
+    document.onmouseup = this.onMouseUp;
   }
 
   onMouseUp = (event) => {
-    console.log('goodbye');
     this.setState({active: false});
   }
 
   onMouseMove = (event) => {
     if (this.state.active) {
-      console.log('pos = ', event.pageX);
+      this.props.updateWidth(event.pageX - this.state.startPosition);
     }
   }
 
@@ -31,7 +37,7 @@ class TableResize extends Component {
 
   render () {
     return (
-      <div className={this.setStyles()} onMouseDown={this.onMouseDown} onMouseMove={this.onMouseMove} onMouseUp={this.onMouseUp} />
+      <div className={this.setStyles()} onMouseDown={this.onMouseDown} />
     );
   }
 };
