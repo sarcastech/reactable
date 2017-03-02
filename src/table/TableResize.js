@@ -10,6 +10,22 @@ class TableResize extends Component {
     };
   }
 
+  findParentByTag = (tag, el) => {
+    if (el.tagName.toLowerCase() === tag) {
+      return el
+    } else if (el.parentElement) {
+      return this.findParentByTag(tag, el.parentElement)
+    } else {
+      return false
+    }
+  }
+
+  componentDidMount = () => {
+    let resizer = this.refs.resizer
+    let table = this.findParentByTag('table', resizer)
+    resizer.style.height = `${table.offsetHeight}px`
+  }
+
   onMouseDown = (event) => {
     event.preventDefault()
     this.setState({startPosition: event.pageX})
@@ -37,7 +53,7 @@ class TableResize extends Component {
 
   render () {
     return (
-      <div className={this.setStyles()} onMouseDown={this.onMouseDown} />
+      <div className={this.setStyles()} ref="resizer" onMouseDown={this.onMouseDown} />
     );
   }
 };
