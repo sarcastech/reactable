@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import Resize from './TableResize'
 
 class TableHeaderCell extends Component {
@@ -34,7 +34,7 @@ class TableHeaderCell extends Component {
       sibling.width = `${this.state.nextSiblingWidth + Math.abs(val)}px`
     }
 
-    element.width = `${this.state.elementWidth + val}px`;
+    element.width = `${this.state.elementWidth + val}px`
   }
 
   render () {

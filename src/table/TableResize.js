@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class TableResize extends Component {
 
@@ -13,12 +13,12 @@ class TableResize extends Component {
   onMouseDown = (event) => {
     event.preventDefault()
     this.setState({startPosition: event.pageX})
-    this.setState({active: true});
+    this.setState({active: true})
 
     this.props.snapshotWidth()
 
-    document.onmousemove = this.onMouseMove;
-    document.onmouseup = this.onMouseUp;
+    document.onmousemove = this.onMouseMove
+    document.onmouseup = this.onMouseUp
   }
 
   onMouseUp = (event) => {
@@ -32,7 +32,7 @@ class TableResize extends Component {
   }
 
   setStyles () {
-    return `resizer-drag ${this.state.active ? 'resizer-ghost' : ''}`;
+    return `resizer-drag ${this.state.active ? 'resizer-ghost' : ''}`
   }
 
   render () {
@@ -42,4 +42,4 @@ class TableResize extends Component {
   }
 };
 
-export default TableResize;
+export default TableResize

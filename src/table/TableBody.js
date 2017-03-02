@@ -1,20 +1,31 @@
-import React, { Component } from 'react';
-import TD from './TableBodyCell';
+import React, { Component } from 'react'
+import TD from './TableBodyCell'
 
 class TableBody extends Component {
 
-  getCells = () => {
-    return this.props.bodyData.map(function (item, index) {
-      return (<TD key={index} value={item} />)
+  getCells = (data, idx) => {
+    return data.map(function (item, index) {
+      return (
+        <TD key={`${idx}-${index}`} value={item} />
+      )
+    })
+  }
+
+  getRows = () => {
+    let getCells = this.getCells
+    return this.props.bodyData.map(function (row, index) {
+      return (
+        <tr key={index}>
+          {getCells(row, index)}
+        </tr>
+      )
     })
   }
 
   render () {
     return (
       <tbody>
-        <tr>
-          {this.getCells()}
-        </tr>
+        {this.getRows()}
       </tbody>
     )
   }
