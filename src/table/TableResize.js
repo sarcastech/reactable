@@ -21,19 +21,20 @@ class TableResize extends Component {
   }
 
   updateWidths = (val) => {
-    let element = this.refs.resizer.parentElement
-    let sibling = element.nextElementSibling
+    let th = this.findParentByTag('th', this.refs.resizer)
+    let thSibling = th.nextElementSibling
+    if (!thSibling) return
+
     let parentState = this.props.getHeaderCellState()
-    if (!sibling) return
     if (val > 0)  {
       if (parentState.nextSiblingWidth - val <= 75) return
-      sibling.width = `${parentState.nextSiblingWidth - val}px`
+      thSibling.width = `${parentState.nextSiblingWidth - val}px`
     } else {
       if (parentState.elementWidth + val <= 75) return
-      sibling.width = `${parentState.nextSiblingWidth + Math.abs(val)}px`
+      thSibling.width = `${parentState.nextSiblingWidth + Math.abs(val)}px`
     }
 
-    element.width = `${parentState.elementWidth + val}px`
+    th.width = `${parentState.elementWidth + val}px`
   }
 
   componentDidMount = () => {
