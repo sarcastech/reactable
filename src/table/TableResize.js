@@ -48,7 +48,7 @@ class TableResize extends Component {
     this.setState({startPosition: event.pageX})
     this.setState({active: true})
 
-    this.props.snapshotWidth()
+    this.props.setCurrentHeaderCellWidths()
 
     document.onmousemove = this.onMouseMove
     document.onmouseup = this.onMouseUp

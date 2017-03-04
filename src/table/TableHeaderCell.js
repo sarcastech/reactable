@@ -13,7 +13,7 @@ class TableHeaderCell extends Component {
     }
   }
 
-  snapshotWidth = () => {
+  setCurrentHeaderCellWidths = () => {
     let siblingWidth = this.refs.headerCell.nextElementSibling ?
       this.refs.headerCell.nextElementSibling.offsetWidth : -1
     this.setState({
@@ -30,7 +30,7 @@ class TableHeaderCell extends Component {
     return (
       <th key={this.props.index} ref="headerCell" width={this.props.width}>
         {this.props.value}
-        <Resize updateWidth={this.updateWidth} getHeaderCellState={this.getHeaderCellState} snapshotWidth={this.snapshotWidth} />
+        <Resize updateWidth={this.updateWidth} getHeaderCellState={this.getHeaderCellState} setCurrentHeaderCellWidths={this.setCurrentHeaderCellWidths} />
       </th>
     )
   }
