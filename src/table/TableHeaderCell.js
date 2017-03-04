@@ -30,7 +30,7 @@ class TableHeaderCell extends Component {
       if (this.state.nextSiblingWidth - val <= 75) return
       sibling.width = `${this.state.nextSiblingWidth - val}px`
     } else {
-      if (this.state.nextSiblingWidth + val < 75) return
+      if (this.state.elementWidth + val <= 75) return
       sibling.width = `${this.state.nextSiblingWidth + Math.abs(val)}px`
     }
 
