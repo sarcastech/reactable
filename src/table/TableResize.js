@@ -21,9 +21,8 @@ class TableResize extends Component {
   }
 
   updateWidths = (val) => {
-    let element = this.refs.resizer.parentElement;
-    let sibling = element.nextElementSibling;
-    console.log('els ', element, sibling)
+    let element = this.refs.resizer.parentElement
+    let sibling = element.nextElementSibling
     let parentState = this.props.getHeaderCellState()
     if (!sibling) return
     if (val > 0)  {
