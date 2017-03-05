@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Resize from './TableResize'
+import Drag from './TableDragColumns'
 
 class TableHeaderCell extends Component {
 
@@ -29,7 +30,7 @@ class TableHeaderCell extends Component {
   render () {
     return (
       <th key={this.props.index} ref="headerCell" width={this.props.width}>
-        {this.props.value}
+        <Drag text={this.props.value} />
         <Resize updateWidth={this.updateWidth} getHeaderCellState={this.getHeaderCellState} setCurrentHeaderCellWidths={this.setCurrentHeaderCellWidths} />
       </th>
     )
